@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.23",
+	"Category": "",
+	"Description": "",
+	"Plugins": [
+		{
+			"Name": "PlayFab",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/217fdf581b784571af03d3fb6580368f"
+		}
+	],
+	"TargetPlatforms": [
+		"HTML5",
+		"WindowsNoEditor"
+	]
+}
