@@ -8,6 +8,10 @@
 			"Name": "PlayFab",
 			"Enabled": false,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/217fdf581b784571af03d3fb6580368f"
+		},
+		{
+			"Name": "Html5Toolbox",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [

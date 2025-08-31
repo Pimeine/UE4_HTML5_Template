@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.3",
+	"FriendlyName": "Html5Toolbox",
+	"Description": "Usefull stuff for HTML games",
+	"Category": "Other",
+	"CreatedBy": "Niels Derderian",
+	"CreatedByURL": "https://www.pimeine.com/",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"EngineVersion": "4.23.0",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "Html5Toolbox",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	]
+}
