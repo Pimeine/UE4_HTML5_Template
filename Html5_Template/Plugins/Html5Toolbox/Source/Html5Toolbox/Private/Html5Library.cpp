@@ -11,6 +11,11 @@ void UHtml5Library::GetProjectVersion(FString& version)
 	version = GetDefault<UGeneralProjectSettings>()->ProjectVersion;
 }
 
+void UHtml5Library::GetProjectName(FString& projectName)
+{
+	projectName = GetDefault<UGeneralProjectSettings>()->ProjectName;
+}
+
 // Misc
 
 FVector UHtml5Library::GetBlackbody(float Temperature)

@@ -71,6 +71,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Html5 Library|General Settings", meta = (DisplayName = "Get Project's Version", ToolTip = "Get the current project version from the Project's Settings."))
 		static void GetProjectVersion(FString& version);
 
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|General Settings", meta = (DisplayName = "Get Project's Name", ToolTip = "Get the current project name from the Project's Settings."))
+		static void GetProjectName(FString& projectName);
+
 	// Misc
 
 	UFUNCTION(BlueprintPure, Category = "Html5 Library|Utility", meta = (DisplayName = "Get Blackbody", ToolTip = "Handle Temperatures between 1000K and 12000K."))
