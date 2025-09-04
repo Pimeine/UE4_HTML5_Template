@@ -52,13 +52,14 @@
 # Builds
 */Build/*
 
-# Whitelist PakBlacklist-<BuildConfiguration>.txt files
-*/!Build/*/
-*/Build/*/**
+# Whitelist Html5 Template Files
+!*/Build/HTML5
+*/Build/HTML5/*
+
+!*/Build/HTML5/project_template.html
+!*/Build/HTML5/project_template.css
+!*/Build/HTML5/project_template.js
 */!Build/*/PakBlacklist*.txt
-*/!Build/HTML5/project_template.html
-*/!Build/HTML5/project_template.css
-*/!Build/HTML5/project_template.js
 
 # Don't ignore icon files in Build
 !Build/**/*.ico
