@@ -56,6 +56,9 @@
 */!Build/*/
 */Build/*/**
 */!Build/*/PakBlacklist*.txt
+*/!Build/HTML5/project_template.html
+*/!Build/HTML5/project_template.css
+*/!Build/HTML5/project_template.js
 
 # Don't ignore icon files in Build
 !Build/**/*.ico
