@@ -1,10 +1,5 @@
 ﻿// javascript code used with Epic Games HTML5 projects
-//
-// much of this is for UE4 development purposes.
-//
-// to create a custom JS file for your project:
-// - make a copy of this file - or make one from scratch
-// - and put it in: "your project folder"/Build/HTML/GameX.js.template
+
 
 // Project variables
 const LoadingThrobber = "https://c.tenor.com/khzZ7-YSJW4AAAAd/tenor.gif";
@@ -106,6 +101,14 @@ var UE4 = {
 // UE4 error and logging
 
 document.addEventListener('error', function(){document.getElementById('clear_indexeddb').style.display = 'inline-block';}, false);
+
+// Prevent from the use of Tab key to keep focus on the game window
+document.addEventListener('keydown', function(e) {
+    if (["Tab"].includes(e.key)) {
+      e.preventDefault();
+    }
+  }, false);
+
 
 function addLog(info, color) {
 	$("#logwindow").append("<h4><small>" + info + " </small></h4>");
