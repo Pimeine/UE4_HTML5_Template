@@ -10,6 +10,7 @@
 html, body, .container {
 	height: 100%;
 	font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+	background-color: black; /* Used to hide page background during loading screen gif */
 }
 
 .h4, h4 {
@@ -53,8 +54,7 @@ html, body, .container {
 	text-align: center;
 	min-width: 640px;
 	width: 100%;
-	height: 480px; /* initial height, will be dynamically adjusted at runtime */
-	max-width: 95%;
+	height: 100%; /* initial height, will be dynamically adjusted at runtime */
 	display: block;
 	align-items: center;
 	position: relative;
@@ -81,10 +81,36 @@ html, body, .container {
 }
 
 #canvas:not([fullscreen]) {
-	padding-right: 0;
-	margin-left: auto;
-	margin-right: auto;
+	padding-right: 0px;
+    margin-top: -14px;
+    margin-right: auto;
 	width: 100%;
+	background: black!important;
+	width: 100%!important;
+    height: 100%!important;
+	/* width: 683px!important;*/
+    /* height: 384px!important;*/
+}
+
+#custButton:hover {
+	  opacity: 1;
+}
+
+#custButton {
+	  position: absolute;
+      bottom: 10px;
+      right: 60px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+	  opacity: 0.7;
+	  width: 0px;
+}
+
+.btn-primary2 {
+	background-color: transparent;
+	
 }
 
 .texthalf {
@@ -105,7 +131,7 @@ html, body, .container {
 	margin-bottom: 0px;
  }
 
-.btn { padding: 0px; text-align: center; min-width: 150px }
+.btn { padding: 0px; text-align: center; min-width: 30px }
 .progress { background: rgba(245, 245, 245, 1); border: 0px solid rgba(245, 245, 245, 1); border-radius: 0px; height: 4px; }
 .progress-bar-custom { background: rgba(153, 153, 153, 1); }
 .centered-axis-xy {

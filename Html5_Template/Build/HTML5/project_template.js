@@ -309,7 +309,7 @@ function detectWebGL() {
 // Canvas scaling mode should be set to one of: 1=STRETCH, 2=ASPECT, or 3=FIXED.
 // This dictates how the canvas size changes when the browser window is resized
 // by dragging from the corner.
-var canvasWindowedScaleMode = %CANVASSCALEMODE%;
+var canvasWindowedScaleMode = %CANVASSCALEMODE%;  //►►►►►►►►►►►►►►►►►►►►►►►► Set this one to 1 for itch - Project settings Stretch
 
 // High DPI setting configures whether to match the canvas size 1:1 with
 // the physical pixels on the screen.
