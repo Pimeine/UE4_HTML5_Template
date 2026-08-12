@@ -3,9 +3,9 @@
 using System.IO;
 using UnrealBuildTool;
 
-public class Html5Toolbox : ModuleRules
+public class Html5ToolboxEditor : ModuleRules
 {
-	public Html5Toolbox(ReadOnlyTargetRules Target) : base(Target)
+	public Html5ToolboxEditor(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
@@ -30,7 +30,8 @@ public class Html5Toolbox : ModuleRules
                 "Http",
                 "Json",
                 "JsonUtilities",
-				"CoreUObject"
+				"CoreUObject",
+				"Html5Toolbox"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -43,6 +44,11 @@ public class Html5Toolbox : ModuleRules
 				"Slate",
 				"SlateCore",
                 "EngineSettings",
+				"UnrealEd",
+				"LevelEditor",
+				"EditorStyle",
+                "Blutility",
+                "AssetRegistry"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

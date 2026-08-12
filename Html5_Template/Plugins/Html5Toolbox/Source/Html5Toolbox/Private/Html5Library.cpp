@@ -159,6 +159,25 @@ float UHtml5Library::GetDistanceAlongSplineAtInputKey(USplineComponent * Spline,
 	}
 }
 
+bool UHtml5Library::RayPlaneIntersection(const FVector & RayOrigin, const FVector & RayDirection, const FPlane & Plane, float & HitDistance)
+{
+	const FVector PlaneNormal = FVector(Plane.X, Plane.Y, Plane.Z);
+
+	const float DirDotN = FVector::DotProduct(RayDirection, PlaneNormal);
+
+
+	if (FMath::Abs(DirDotN) > KINDA_SMALL_NUMBER)
+	{
+		HitDistance = (Plane.W - FVector::DotProduct(RayOrigin, PlaneNormal)) / DirDotN;
+		return true;
+	}
+
+	HitDistance = 0.0;
+	return false;
+}
+
+
+
 // Google Sheet
 
 void UHtml5Library::SendToSheet(const FString& SheetUrl, const TMap<FString, FString>& DataMap)

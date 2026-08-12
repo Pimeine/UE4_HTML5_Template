@@ -99,6 +99,8 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Distance Along Spline At Location"), Category = "Html5 Library|Spline")
 	static float GetDistanceAlongSplineAtInputKey(USplineComponent* Spline, float InKey);
 
+	UFUNCTION(BlueprintPure, Category = "Math|Intersection", meta = (ScriptMethod))
+	static bool RayPlaneIntersection(const FVector& RayOrigin, const FVector& RayDirection, const FPlane& Plane, float& HitDistance);
 
 	// Google Sheet
 	UFUNCTION(BlueprintCallable, Category = "Google Sheets")
@@ -109,4 +111,5 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Google Sheets")
 	static void UpdateSheetCellData(const FString& SheetUrl, const FString& CellReference, const FString& NewValue);
+
 };
