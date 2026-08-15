@@ -12,6 +12,10 @@
 		{
 			"Name": "Html5Toolbox",
 			"Enabled": true
+		},
+		{
+			"Name": "EditorScriptingUtilities",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
