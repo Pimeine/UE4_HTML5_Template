@@ -1,11 +1,9 @@
-// Some copyright should be here...
-
 using System.IO;
 using UnrealBuildTool;
 
-public class Html5Toolbox : ModuleRules
+public class Html5Network : ModuleRules
 {
-	public Html5Toolbox(ReadOnlyTargetRules Target) : base(Target)
+	public Html5Network(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 
@@ -32,7 +30,6 @@ public class Html5Toolbox : ModuleRules
                 "JsonUtilities",
 				"CoreUObject",
                 "WebSockets"
-				// ... add other public dependencies that you statically link with here ...
 			}
 			);
 
@@ -44,7 +41,6 @@ public class Html5Toolbox : ModuleRules
 				"Slate",
 				"SlateCore",
                 "EngineSettings",
-				"Html5Network"
 			}
 			);
 		

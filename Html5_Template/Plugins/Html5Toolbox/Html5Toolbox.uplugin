@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
 	"Version": 1,
-	"VersionName": "1.5",
+	"VersionName": "2.0",
 	"FriendlyName": "Html5Toolbox",
 	"Description": "Usefull stuff for HTML games",
 	"Category": "Other",
@@ -23,6 +23,11 @@
 			"Name": "Html5ToolboxEditor",
 			"Type": "Editor",
 			"LoadingPhase": "PostEngineInit"
+		},
+		{
+			"Name": "Html5Network",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
 	]
 }

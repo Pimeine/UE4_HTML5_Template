@@ -53,6 +53,15 @@ struct FGoogleSheetCellData
 	}
 };
 
+USTRUCT(BlueprintType)
+struct FNetPayloadData
+{
+	GENERATED_BODY()
+
+		UPROPERTY(BlueprintReadOnly, Category = "Html5 Library|Json")
+		FString RawJson;
+};
+
 DECLARE_LOG_CATEGORY_EXTERN(NielsTools, Log, All);
 DECLARE_DYNAMIC_DELEGATE_OneParam(FOnGoogleSheetDataReceived, FGoogleSheetCellData, CellData);
 
@@ -81,6 +90,28 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Html5 Library|Utility", meta = (DisplayName = "Repeat String", ToolTip = "Repeat a string x times."))
 		static FString RepeatString(int32 Count, const FString& StringToRepeat);
+
+	// JSON Payload Parser
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Get Float from Payload"))
+		static bool GetFloatFromPayload(const FString& JsonString, const FString& Key, float& OutValue);
+
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Get Int from Payload"))
+		static bool GetIntFromPayload(const FString& JsonString, const FString& Key, int32& OutValue);
+
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Get Bool from Payload"))
+		static bool GetBoolFromPayload(const FString& JsonString, const FString& Key, bool& OutValue);
+
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Get String from Payload"))
+		static bool GetStringFromPayload(const FString& JsonString, const FString& Key, FString& OutValue);
+
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Get Vector from Payload"))
+		static bool GetVectorFromPayload(const FString& JsonString, const FString& Key, FVector& OutValue);
+
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Get Rotator from Payload"))
+		static bool GetRotatorFromPayload(const FString& JsonString, const FString& Key, FRotator& OutValue);
+
+	UFUNCTION(BlueprintPure, Category = "Html5 Library|Payload Parser", meta = (DisplayName = "Payload Has Key"))
+		static bool PayloadHasKey(const FString& JsonString, const FString& Key);
 
 	UFUNCTION(BlueprintPure, Category = "Html5 Library|Game", meta = (DisplayName = "Get World", ToolTip = "Get Current World UWorld Reference.", WorldContext = "WorldContextObject"))
 		static UWorld* GetCurrentWorldObject(UObject* WorldContextObject);
@@ -112,4 +143,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Google Sheets")
 	static void UpdateSheetCellData(const FString& SheetUrl, const FString& CellReference, const FString& NewValue);
 
+private:
+	static TSharedPtr<FJsonObject> ParseJsonString(const FString& JsonString);
 };

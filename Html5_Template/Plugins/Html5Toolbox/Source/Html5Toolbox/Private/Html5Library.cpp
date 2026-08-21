@@ -78,6 +78,118 @@ UWorld* UHtml5Library::GetCurrentWorldObject(UObject* WorldContextObject)
 	return World;
 }
 
+// JSON Payload Parser
+
+TSharedPtr<FJsonObject> UHtml5Library::ParseJsonString(const FString& JsonString)
+{
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		return JsonObject;
+	}
+	return nullptr;
+}
+
+bool UHtml5Library::GetFloatFromPayload(const FString& JsonString, const FString& Key, float& OutValue)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid() || !JsonObject->HasField(Key))
+	{
+		OutValue = 0.0f;
+		return false;
+	}
+	OutValue = JsonObject->GetNumberField(Key);
+	return true;
+}
+
+bool UHtml5Library::GetIntFromPayload(const FString& JsonString, const FString& Key, int32& OutValue)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid() || !JsonObject->HasField(Key))
+	{
+		OutValue = 0;
+		return false;
+	}
+	OutValue = (int32)JsonObject->GetNumberField(Key);
+	return true;
+}
+
+bool UHtml5Library::GetBoolFromPayload(const FString& JsonString, const FString& Key, bool& OutValue)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid() || !JsonObject->HasField(Key))
+	{
+		OutValue = false;
+		return false;
+	}
+	OutValue = JsonObject->GetBoolField(Key);
+	return true;
+}
+
+bool UHtml5Library::GetStringFromPayload(const FString& JsonString, const FString& Key, FString& OutValue)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid() || !JsonObject->HasField(Key))
+	{
+		OutValue = TEXT("");
+		return false;
+	}
+	OutValue = JsonObject->GetStringField(Key);
+	return true;
+}
+
+bool UHtml5Library::GetVectorFromPayload(const FString& JsonString, const FString& Key, FVector& OutValue)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid() || !JsonObject->HasField(Key))
+	{
+		OutValue = FVector::ZeroVector;
+		return false;
+	}
+
+	const TSharedPtr<FJsonObject>* VectorObj = nullptr;
+	if (!JsonObject->TryGetObjectField(Key, VectorObj) || !VectorObj->IsValid())
+	{
+		OutValue = FVector::ZeroVector;
+		return false;
+	}
+
+	OutValue.X = (*VectorObj)->GetNumberField(TEXT("x"));
+	OutValue.Y = (*VectorObj)->GetNumberField(TEXT("y"));
+	OutValue.Z = (*VectorObj)->GetNumberField(TEXT("z"));
+	return true;
+}
+
+bool UHtml5Library::GetRotatorFromPayload(const FString& JsonString, const FString& Key, FRotator& OutValue)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid() || !JsonObject->HasField(Key))
+	{
+		OutValue = FRotator::ZeroRotator;
+		return false;
+	}
+
+	const TSharedPtr<FJsonObject>* RotObj = nullptr;
+	if (!JsonObject->TryGetObjectField(Key, RotObj) || !RotObj->IsValid())
+	{
+		OutValue = FRotator::ZeroRotator;
+		return false;
+	}
+
+	OutValue.Pitch = (*RotObj)->GetNumberField(TEXT("pitch"));
+	OutValue.Yaw = (*RotObj)->GetNumberField(TEXT("yaw"));
+	OutValue.Roll = (*RotObj)->GetNumberField(TEXT("roll"));
+	return true;
+}
+
+bool UHtml5Library::PayloadHasKey(const FString& JsonString, const FString& Key)
+{
+	TSharedPtr<FJsonObject> JsonObject = ParseJsonString(JsonString);
+	if (!JsonObject.IsValid()) return false;
+	return JsonObject->HasField(Key);
+}
+
 // Discord
 
 void UHtml5Library::SendDiscordMessage(const FString& WebhookUrl, const FString& MessageToSend)
